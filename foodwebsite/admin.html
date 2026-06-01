@@ -214,7 +214,7 @@
             <div class="section-header">
                 <h2>店铺管理</h2>
                 <div class="header-actions">
-                    <button class="btn btn-primary">+ 添加店铺</button>
+                    <button class="btn btn-primary" onclick="openAddShopModal()">+ 添加店铺</button>
                 </div>
             </div>
             <div class="data-table">
@@ -244,8 +244,8 @@
                             <td>4.9</td>
                             <td><span class="status-badge active">营业中</span></td>
                             <td>
-                                <button class="btn-text">编辑</button>
-                                <button class="btn-text danger">删除</button>
+                                <button class="btn-text" onclick="openShopEditModal('001')">编辑</button>
+                                <button class="btn-text danger" onclick="deleteShop('001')">删除</button>
                             </td>
                         </tr>
                         <tr>
@@ -261,8 +261,8 @@
                             <td>4.7</td>
                             <td><span class="status-badge active">营业中</span></td>
                             <td>
-                                <button class="btn-text">编辑</button>
-                                <button class="btn-text danger">删除</button>
+                               <button class="btn-text" onclick="openShopEditModal('002')">编辑</button>
+                               <button class="btn-text danger" onclick="deleteShop('002')">删除</button>
                             </td>
                         </tr>
                         <tr>
@@ -278,8 +278,8 @@
                             <td>4.8</td>
                             <td><span class="status-badge pending">审核中</span></td>
                             <td>
-                                <button class="btn-text">编辑</button>
-                                <button class="btn-text danger">删除</button>
+                                <button class="btn-text" onclick="openShopEditModal('003')">编辑</button>
+                                <button class="btn-text danger" onclick="deleteShop('003')">删除</button>
                             </td>
                         </tr>
                     </tbody>
@@ -427,6 +427,130 @@
                 </div>
             </div>
         </section>
+      <!-- 店铺编辑弹窗 -->
+<div class="modal" id="shopEditModal">
+    <div class="modal-overlay" onclick="closeShopModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>编辑店铺信息</h3>
+            <button class="modal-close" onclick="closeShopModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="shopEditForm">
+                <input type="hidden" id="editShopId">
+                <div class="form-group">
+                    <label>店铺名称</label>
+                    <input type="text" id="editShopName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺类型</label>
+                    <select id="editShopType" class="form-input" required>
+                        <option value="火锅">火锅</option>
+                        <option value="日料">日料</option>
+                        <option value="西餐">西餐</option>
+                        <option value="甜品">甜品</option>
+                        <option value="烧烤">烧烤</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>所属商圈</label>
+                    <input type="text" id="editShopArea" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺评分</label>
+                    <input type="number" id="editShopScore" class="form-input" min="0" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺状态</label>
+                    <select id="editShopStatus" class="form-input" required>
+                        <option value="active">营业中</option>
+                        <option value="pending">审核中</option>
+                        <option value="closed">已停业</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>店铺图片URL</label>
+                    <input type="text" id="editShopImage" class="form-input" placeholder="https://...">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeShopModal()">取消</button>
+            <button class="btn btn-primary" onclick="saveShopEdit()">保存修改</button>
+        </div>
+    </div>
+</div>
+<!-- 删除确认弹窗（美观版） -->
+<div class="modal" id="deleteModal">
+    <div class="modal-overlay" onclick="closeDeleteModal()"></div>
+    <div class="modal-content delete-modal">
+        <div class="modal-header">
+            <h3>确认删除</h3>
+            <button class="modal-close" onclick="closeDeleteModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="delete-tip">确定要删除该店铺吗？<br>此操作不可恢复，请谨慎操作！</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">取消</button>
+            <button class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
+        </div>
+    </div>
+</div>
+<!-- 添加店铺弹窗 -->
+<div class="modal" id="shopAddModal">
+    <div class="modal-overlay" onclick="closeAddShopModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>添加新店铺</h3>
+            <button class="modal-close" onclick="closeAddShopModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="shopAddForm">
+                <div class="form-group">
+                    <label>店铺名称</label>
+                    <input type="text" id="addShopName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺类型</label>
+                    <select id="addShopType" class="form-input" required>
+                        <option value="火锅">火锅</option>
+                        <option value="日料">日料</option>
+                        <option value="西餐">西餐</option>
+                        <option value="甜品">甜品</option>
+                        <option value="烧烤">烧烤</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>所属商圈</label>
+                    <input type="text" id="addShopArea" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺评分</label>
+                    <input type="number" id="addShopScore" class="form-input" min="0" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺状态</label>
+                    <select id="addShopStatus" class="form-input" required>
+                        <option value="active">营业中</option>
+                        <option value="pending">审核中</option>
+                        <option value="closed">已停业</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>店铺图片URL</label>
+                    <input type="text" id="addShopImage" class="form-input" placeholder="https://...">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeAddShopModal()">取消</button>
+            <button class="btn btn-primary" onclick="saveAddShop()">保存店铺</button>
+        </div>
+    </div>
+</div>
     </main>
 
     <script src="js/common.js"></script>
