@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美食榜单 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/rank.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html">日记</a></li>
+                <li><a href="rank.html" class="active">榜单</a></li>
+                <li><a href="collect.html">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>美食榜单</h1>
+            <p>实时更新，发现全城热门好店</p>
+        </div>
+    </section>
+
+    <!-- 榜单内容 -->
+    <section class="rank-section">
+        <div class="container">
+            <!-- 榜单标签 -->
+            <div class="rank-tabs">
+                <button class="rank-tab active" data-tab="hot">
+                    <span class="tab-icon">🔥</span>
+                    <span class="tab-name">热门榜</span>
+                    <span class="tab-desc">最受欢迎</span>
+                </button>
+                <button class="rank-tab" data-tab="new">
+                    <span class="tab-icon">✨</span>
+                    <span class="tab-name">新店榜</span>
+                    <span class="tab-desc">最新开业</span>
+                </button>
+                <button class="rank-tab" data-tab="value">
+                    <span class="tab-icon">💰</span>
+                    <span class="tab-name">性价比榜</span>
+                    <span class="tab-desc">物超所值</span>
+                </button>
+                <button class="rank-tab" data-tab="taste">
+                    <span class="tab-icon">👨‍🍳</span>
+                    <span class="tab-name">口味榜</span>
+                    <span class="tab-desc">味道最佳</span>
+                </button>
+                <button class="rank-tab" data-tab="env">
+                    <span class="tab-icon">🏞️</span>
+                    <span class="tab-name">环境榜</span>
+                    <span class="tab-desc">环境最优</span>
+                </button>
+            </div>
+
+            <!-- 热门榜 -->
+            <div class="rank-content active" id="hot-rank">
+                <div class="rank-header">
+                    <h2>🔥 热门美食榜</h2>
+                    <p>根据用户评分、收藏、打卡数据综合计算，每小时更新</p>
+                </div>
+                <div class="rank-list">
+                    <!-- TOP 3 -->
+                    <div class="rank-top3">
+                        <div class="rank-item rank-2">
+                            <div class="rank-badge">2</div>
+                            <div class="rank-card">
+                                <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400" alt="店铺">
+                                <div class="rank-info">
+                                    <h3>樱花日料</h3>
+                                    <p>日料 · 太古里</p>
+                                    <div class="rank-meta">
+                                        <span class="score">4.7分</span>
+                                        <span class="price">¥168/人</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rank-item rank-1">
+                            <div class="rank-badge">1</div>
+                            <div class="rank-card">
+                                <span class="crown">👑</span>
+                                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" alt="店铺">
+                                <div class="rank-info">
+                                    <h3>蜀味老火锅</h3>
+                                    <p>火锅 · 春熙路</p>
+                                    <div class="rank-meta">
+                                        <span class="score">4.9分</span>
+                                        <span class="price">¥88/人</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rank-item rank-3">
+                            <div class="rank-badge">3</div>
+                            <div class="rank-card">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="店铺">
+                                <div class="rank-info">
+                                    <h3>意式风情餐厅</h3>
+                                    <p>西餐 · IFS</p>
+                                    <div class="rank-meta">
+                                        <span class="score">4.8分</span>
+                                        <span class="price">¥218/人</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 其他排名 -->
+                    <div class="rank-others">
+                        <div class="rank-list-item">
+                            <span class="rank-number">4</span>
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>甜蜜时光</h4>
+                                <p>甜品 · 宽窄巷子 · 人均¥45</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.6分</span>
+                                <span class="stat-hot">🔥 2.3k</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">5</span>
+                            <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>炭火烧烤</h4>
+                                <p>烧烤 · 九眼桥 · 人均¥65</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.5分</span>
+                                <span class="stat-hot">🔥 1.8k</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">6</span>
+                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>川味小厨</h4>
+                                <p>中餐 · 春熙路 · 人均¥58</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.8分</span>
+                                <span class="stat-hot">🔥 1.5k</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">7</span>
+                            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>老北京涮羊肉</h4>
+                                <p>火锅 · 宽窄巷子 · 人均¥98</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.7分</span>
+                                <span class="stat-hot">🔥 1.2k</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">8</span>
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>法式甜品屋</h4>
+                                <p>甜品 · 太古里 · 人均¥68</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.6分</span>
+                                <span class="stat-hot">🔥 986</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">9</span>
+                            <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>韩式烤肉</h4>
+                                <p>韩料 · 春熙路 · 人均¥88</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.4分</span>
+                                <span class="stat-hot">🔥 856</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">10</span>
+                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>海鲜大排档</h4>
+                                <p>海鲜 · 九眼桥 · 人均¥128</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.5分</span>
+                                <span class="stat-hot">🔥 723</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他榜单内容（示例） -->
+            <div class="rank-content" id="new-rank">
+                <div class="rank-header">
+                    <h2>✨ 人气新店榜</h2>
+                    <p>最近30天内新开业的优质店铺</p>
+                </div>
+                <div class="rank-list">
+                    <div class="rank-others">
+                        <div class="rank-list-item">
+                            <span class="rank-number">1</span>
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>意式风情餐厅</h4>
+                                <p>西餐 · IFS · 人均¥218</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.8分</span>
+                                <span class="tag tag-new">新店</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">2</span>
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>法式甜品屋</h4>
+                                <p>甜品 · 太古里 · 人均¥68</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.6分</span>
+                                <span class="tag tag-new">新店</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-content" id="value-rank">
+                <div class="rank-header">
+                    <h2>💰 性价比必吃榜</h2>
+                    <p>好吃不贵，物超所值的店铺推荐</p>
+                </div>
+                <div class="rank-list">
+                    <div class="rank-others">
+                        <div class="rank-list-item">
+                            <span class="rank-number">1</span>
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>甜蜜时光</h4>
+                                <p>甜品 · 宽窄巷子 · 人均¥45</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.6分</span>
+                                <span class="stat-price">💰 超值</span>
+                            </div>
+                        </div>
+                        <div class="rank-list-item">
+                            <span class="rank-number">2</span>
+                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=200" alt="店铺">
+                            <div class="rank-detail">
+                                <h4>川味小厨</h4>
+                                <p>中餐 · 春熙路 · 人均¥58</p>
+                            </div>
+                            <div class="rank-stats">
+                                <span class="stat-score">4.8分</span>
+                                <span class="stat-price">💰 超值</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于寻味</h4>
+                    <p>寻味是一个专注于城市美食探店推荐的平台，帮助食客发现身边的美味。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="shop.html">探店</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="rank.html">榜单</a></li>
+                        <li><a href="collect.html">我的收藏</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>邮箱：contact@xunwei.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：成都市锦江区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 寻味 - 城市美食探店推荐. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/rank.js"></script>
+</body>
+</html>

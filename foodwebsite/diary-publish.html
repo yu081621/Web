@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布探店日记 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .publish-page {
+            padding-top: 90px;
+            padding-bottom: var(--space-2xl);
+            background: var(--bg-primary);
+            min-height: 100vh;
+        }
+        
+        .publish-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .publish-header h1 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .publish-header p {
+            color: var(--text-secondary);
+        }
+        
+        .publish-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .form-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .form-section-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+        
+        .image-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .image-upload:hover {
+            border-color: var(--primary);
+            background: rgba(230, 126, 34, 0.02);
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .upload-hint {
+            font-size: var(--font-size-xs);
+            color: var(--text-light);
+        }
+        
+        .uploaded-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        
+        .uploaded-image {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .uploaded-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 24px;
+            height: 24px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: var(--space-xs);
+        }
+        
+        .rating-star {
+            font-size: 28px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .rating-star:hover,
+        .rating-star.active {
+            color: var(--accent);
+        }
+        
+        .rating-text {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            padding: 8px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            min-height: 48px;
+        }
+        
+        .tag-input input {
+            border: none;
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .selected-tag {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+        }
+        
+        .remove-tag {
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .suggested-tags {
+            margin-top: var(--space-sm);
+        }
+        
+        .suggested-tags span {
+            display: inline-block;
+            padding: 4px 12px;
+            margin: 4px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .suggested-tags span:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-md);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .publish-form {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html" class="active">日记</a></li>
+                <li><a href="rank.html">榜单</a></li>
+                <li><a href="collect.html">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 发布表单 -->
+    <section class="publish-page">
+        <div class="container">
+            <div class="publish-header">
+                <h1>发布探店日记</h1>
+                <p>分享你的美食体验，帮助更多人发现好味道</p>
+            </div>
+
+            <form class="publish-form" id="publishForm">
+                <!-- 店铺信息 -->
+                <div class="form-section">
+                    <h3 class="form-section-title">🏪 店铺信息</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">店铺名称 *</label>
+                            <input type="text" class="form-input" placeholder="请输入店铺名称" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">店铺位置 *</label>
+                            <select class="form-select" required>
+                                <option value="">选择商圈</option>
+                                <option value="chunxi">春熙路</option>
+                                <option value="taikoo">太古里</option>
+                                <option value="ifs">IFS</option>
+                                <option value="kuanzhai">宽窄巷子</option>
+                                <option value="jiuyan">九眼桥</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 评分 -->
+                <div class="form-section">
+                    <h3 class="form-section-title">⭐ 用餐评价</h3>
+                    <div class="form-group">
+                        <label class="form-label">总体评分</label>
+                        <div class="rating-section">
+                            <div class="rating-stars" id="ratingStars">
+                                <span class="rating-star" data-rating="1">★</span>
+                                <span class="rating-star" data-rating="2">★</span>
+                                <span class="rating-star" data-rating="3">★</span>
+                                <span class="rating-star" data-rating="4">★</span>
+                                <span class="rating-star" data-rating="5">★</span>
+                            </div>
+                            <span class="rating-text" id="ratingText">点击星星评分</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">口味</label>
+                            <select class="form-select">
+                                <option>非常好</option>
+                                <option>很好</option>
+                                <option>一般</option>
+                                <option>较差</option>
+                                <option>很差</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">环境</label>
+                            <select class="form-select">
+                                <option>非常好</option>
+                                <option>很好</option>
+                                <option>一般</option>
+                                <option>较差</option>
+                                <option>很差</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">服务</label>
+                            <select class="form-select">
+                                <option>非常好</option>
+                                <option>很好</option>
+                                <option>一般</option>
+                                <option>较差</option>
+                                <option>很差</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">性价比</label>
+                            <select class="form-select">
+                                <option>非常高</option>
+                                <option>很高</option>
+                                <option>一般</option>
+                                <option>较低</option>
+                                <option>很低</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 探店内容 -->
+                <div class="form-section">
+                    <h3 class="form-section-title">📝 探店内容</h3>
+                    <div class="form-group">
+                        <label class="form-label">标题 *</label>
+                        <input type="text" class="form-input" placeholder="给你的探店日记起个吸引人的标题吧" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">探店心得 *</label>
+                        <textarea class="form-textarea" rows="6" placeholder="分享你的用餐体验，推荐菜品、环境氛围、服务态度等..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">上传图片</label>
+                        <div class="image-upload" onclick="document.getElementById('imageInput').click()">
+                            <div class="upload-icon">📷</div>
+                            <div class="upload-text">点击或拖拽上传图片</div>
+                            <div class="upload-hint">支持 JPG、PNG 格式，最多上传 9 张</div>
+                        </div>
+                        <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
+                        <div class="uploaded-images" id="uploadedImages"></div>
+                    </div>
+                </div>
+
+                <!-- 标签 -->
+                <div class="form-section">
+                    <h3 class="form-section-title">🏷️ 添加标签</h3>
+                    <div class="form-group">
+                        <label class="form-label">标签（按回车添加）</label>
+                        <div class="tag-input" id="tagInput">
+                            <input type="text" placeholder="添加标签，如：火锅、约会、聚餐">
+                        </div>
+                        <div class="suggested-tags">
+                            <span onclick="addTag('火锅')">火锅</span>
+                            <span onclick="addTag('烧烤')">烧烤</span>
+                            <span onclick="addTag('日料')">日料</span>
+                            <span onclick="addTag('甜品')">甜品</span>
+                            <span onclick="addTag('约会')">约会</span>
+                            <span onclick="addTag('聚餐')">聚餐</span>
+                            <span onclick="addTag('网红店')">网红店</span>
+                            <span onclick="addTag('老字号')">老字号</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-ghost btn-lg" onclick="history.back()">取消</button>
+                    <button type="submit" class="btn btn-primary btn-lg">发布日记</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/common.js"></script>
+    <script>
+        // 评分功能
+        const ratingStars = document.querySelectorAll('.rating-star');
+        const ratingText = document.getElementById('ratingText');
+        const ratingLabels = ['非常差', '差', '一般', '好', '非常好'];
+        let currentRating = 0;
+
+        ratingStars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                updateRating();
+            });
+            
+            star.addEventListener('mouseenter', () => {
+                highlightStars(index + 1);
+                ratingText.textContent = ratingLabels[index];
+            });
+        });
+
+        document.getElementById('ratingStars').addEventListener('mouseleave', () => {
+            updateRating();
+        });
+
+        function highlightStars(count) {
+            ratingStars.forEach((star, index) => {
+                star.classList.toggle('active', index < count);
+            });
+        }
+
+        function updateRating() {
+            highlightStars(currentRating);
+            ratingText.textContent = currentRating > 0 ? ratingLabels[currentRating - 1] : '点击星星评分';
+        }
+
+        // 图片上传
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImages = document.getElementById('uploadedImages');
+
+        imageInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const div = document.createElement('div');
+                    div.className = 'uploaded-image';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="上传的图片">
+                        <span class="remove-image" onclick="this.parentElement.remove()">×</span>
+                    `;
+                    uploadedImages.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // 标签功能
+        const tagInput = document.querySelector('#tagInput input');
+        const tagContainer = document.getElementById('tagInput');
+
+        tagInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && tagInput.value.trim()) {
+                e.preventDefault();
+                addTag(tagInput.value.trim());
+                tagInput.value = '';
+            }
+        });
+
+        function addTag(tagText) {
+            const existingTags = document.querySelectorAll('.selected-tag');
+            if (existingTags.length >= 5) {
+                alert('最多添加5个标签');
+                return;
+            }
+            
+            const tag = document.createElement('span');
+            tag.className = 'selected-tag';
+            tag.innerHTML = `
+                ${tagText}
+                <span class="remove-tag" onclick="this.parentElement.remove()">×</span>
+            `;
+            tagContainer.insertBefore(tag, tagInput);
+        }
+
+        // 表单提交
+        document.getElementById('publishForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('日记发布成功！');
+            window.location.href = 'diary.html';
+        });
+    </script>
+</body>
+</html>

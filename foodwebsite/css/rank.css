@@ -1,0 +1,373 @@
+/* ============================================
+   排行榜页样式
+   ============================================ */
+
+/* 页面头部 */
+.page-header {
+    padding-top: 100px;
+    padding-bottom: var(--space-xl);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.page-header p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+/* 榜单区域 */
+.rank-section {
+    padding: var(--space-xl) 0;
+    background: var(--bg-primary);
+}
+
+/* 榜单标签 */
+.rank-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.rank-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.rank-tab:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.rank-tab.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+}
+
+.tab-icon {
+    font-size: 24px;
+}
+
+.tab-name {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+}
+
+.tab-desc {
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+}
+
+/* 榜单内容 */
+.rank-content {
+    display: none;
+}
+
+.rank-content.active {
+    display: block;
+}
+
+.rank-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.rank-header h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+}
+
+.rank-header p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* TOP 3 展示 */
+.rank-top3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-xl);
+}
+
+.rank-item {
+    position: relative;
+    text-align: center;
+}
+
+.rank-1 {
+    order: 2;
+    transform: scale(1.1);
+}
+
+.rank-2 {
+    order: 1;
+}
+
+.rank-3 {
+    order: 3;
+}
+
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+    z-index: 1;
+}
+
+.rank-2 .rank-badge {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.4);
+}
+
+.rank-3 .rank-badge {
+    background: linear-gradient(135deg, #cd7f32, #b87333);
+    box-shadow: 0 4px 12px rgba(205, 127, 50, 0.4);
+}
+
+.rank-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    width: 280px;
+}
+
+.rank-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.rank-card .crown {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    font-size: 32px;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.rank-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.rank-info {
+    padding: var(--space-md);
+}
+
+.rank-info h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-xs);
+}
+
+.rank-info p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.rank-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rank-meta .score {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.rank-meta .price {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+}
+
+/* 其他排名列表 */
+.rank-others {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.rank-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s ease;
+}
+
+.rank-list-item:last-child {
+    border-bottom: none;
+}
+
+.rank-list-item:hover {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+}
+
+.rank-number {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+}
+
+.rank-list-item:nth-child(-n+3) .rank-number {
+    color: var(--primary);
+}
+
+.rank-list-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.rank-detail {
+    flex: 1;
+}
+
+.rank-detail h4 {
+    font-size: var(--font-size-md);
+    margin-bottom: 4px;
+}
+
+.rank-detail p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.rank-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.stat-score {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-hot {
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+}
+
+.stat-price {
+    font-size: var(--font-size-xs);
+    color: #27ae60;
+    font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .rank-top3 {
+        flex-wrap: wrap;
+    }
+    
+    .rank-1,
+    .rank-2,
+    .rank-3 {
+        order: 0;
+        transform: none;
+    }
+    
+    .rank-card {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .rank-tabs {
+        gap: var(--space-sm);
+    }
+    
+    .rank-tab {
+        min-width: 80px;
+        padding: var(--space-sm);
+    }
+    
+    .tab-icon {
+        font-size: 20px;
+    }
+    
+    .tab-name {
+        font-size: var(--font-size-sm);
+    }
+    
+    .tab-desc {
+        display: none;
+    }
+    
+    .rank-top3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rank-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .rank-list-item {
+        flex-wrap: wrap;
+    }
+    
+    .rank-detail {
+        width: calc(100% - 140px);
+    }
+    
+    .rank-stats {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: var(--space-sm);
+    }
+}

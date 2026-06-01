@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻味 - 城市美食探店推荐</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html">日记</a></li>
+                <li><a href="rank.html">榜单</a></li>
+                <li><a href="collect.html">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">发现城市里的<span>美味惊喜</span></h1>
+            <p class="hero-subtitle">本地人私藏好店 · 真实探店分享 · 不踩雷的美食指南</p>
+            <div class="hero-search">
+                <input type="text" placeholder="搜索店铺、菜系、商圈..." class="search-input">
+                <button class="btn btn-primary btn-lg">搜索</button>
+            </div>
+            <div class="hero-tags">
+                <span>热门搜索：</span>
+                <a href="#">火锅</a>
+                <a href="#">烧烤</a>
+                <a href="#">日料</a>
+                <a href="#">甜品</a>
+                <a href="#">网红店</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>向下滚动</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- 分类导航 -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-grid">
+                <a href="shop.html?type=hotpot" class="category-item">
+                    <div class="category-icon">🍲</div>
+                    <span>火锅</span>
+                </a>
+                <a href="shop.html?type=bbq" class="category-item">
+                    <div class="category-icon">🍖</div>
+                    <span>烧烤</span>
+                </a>
+                <a href="shop.html?type=dessert" class="category-item">
+                    <div class="category-icon">🍰</div>
+                    <span>甜品</span>
+                </a>
+                <a href="shop.html?type=chinese" class="category-item">
+                    <div class="category-icon">🥢</div>
+                    <span>中餐</span>
+                </a>
+                <a href="shop.html?type=western" class="category-item">
+                    <div class="category-icon">🍝</div>
+                    <span>西餐</span>
+                </a>
+                <a href="shop.html?type=japanese" class="category-item">
+                    <div class="category-icon">🍣</div>
+                    <span>日料</span>
+                </a>
+                <a href="shop.html?type=korean" class="category-item">
+                    <div class="category-icon">🥘</div>
+                    <span>韩料</span>
+                </a>
+                <a href="shop.html?type=snack" class="category-item">
+                    <div class="category-icon">🥟</div>
+                    <span>小吃</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 推荐店铺 -->
+    <section class="section recommended">
+        <div class="container">
+            <h2 class="section-title">精选<span>推荐</span></h2>
+            <div class="shop-grid" id="recommendedShops">
+                <!-- 店铺卡片将通过JS动态加载 -->
+                <div class="card shop-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" alt="店铺图片">
+                        <span class="tag tag-recommend">精选</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">蜀味老火锅</h3>
+                        <div class="shop-meta">
+                            <span class="shop-type">火锅</span>
+                            <span class="shop-area">春熙路</span>
+                        </div>
+                        <div class="shop-info">
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <span class="rating-score">4.9</span>
+                            </div>
+                            <span class="price">¥88/人</span>
+                        </div>
+                        <p class="card-desc">正宗川味火锅，麻辣鲜香，食材新鲜，环境复古有格调</p>
+                    </div>
+                </div>
+
+                <div class="card shop-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400" alt="店铺图片">
+                        <span class="tag tag-hot">热门</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">樱花日料</h3>
+                        <div class="shop-meta">
+                            <span class="shop-type">日料</span>
+                            <span class="shop-area">太古里</span>
+                        </div>
+                        <div class="shop-info">
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-score">4.7</span>
+                            </div>
+                            <span class="price">¥168/人</span>
+                        </div>
+                        <p class="card-desc">新鲜刺身，精致摆盘，榻榻米包间，约会聚餐首选</p>
+                    </div>
+                </div>
+
+                <div class="card shop-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="店铺图片">
+                        <span class="tag tag-new">新店</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">意式风情餐厅</h3>
+                        <div class="shop-meta">
+                            <span class="shop-type">西餐</span>
+                            <span class="shop-area">IFS</span>
+                        </div>
+                        <div class="shop-info">
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <span class="rating-score">4.8</span>
+                            </div>
+                            <span class="price">¥218/人</span>
+                        </div>
+                        <p class="card-desc">手工意面，正宗披萨，浪漫氛围，适合情侣约会</p>
+                    </div>
+                </div>
+
+                <div class="card shop-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="店铺图片">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">甜蜜时光</h3>
+                        <div class="shop-meta">
+                            <span class="shop-type">甜品</span>
+                            <span class="shop-area">宽窄巷子</span>
+                        </div>
+                        <div class="shop-info">
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                            <span class="price">¥45/人</span>
+                        </div>
+                        <p class="card-desc">法式甜品，颜值超高，下午茶好去处，拍照打卡圣地</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-lg">
+                <a href="shop.html" class="btn btn-secondary btn-lg">查看更多店铺</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门榜单 -->
+    <section class="section rankings">
+        <div class="container">
+            <h2 class="section-title">美食<span>榜单</span></h2>
+            <div class="ranking-tabs">
+                <button class="tab-btn active" data-tab="hot">热门榜</button>
+                <button class="tab-btn" data-tab="new">新店榜</button>
+                <button class="tab-btn" data-tab="value">性价比榜</button>
+            </div>
+            <div class="ranking-content">
+                <div class="ranking-list active" id="hot-rank">
+                    <div class="rank-item">
+                        <span class="rank-num top3">1</span>
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=100" alt="店铺">
+                        <div class="rank-info">
+                            <h4>蜀味老火锅</h4>
+                            <p>火锅 · 春熙路 · 人均¥88</p>
+                        </div>
+                        <span class="rank-score">4.9分</span>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num top3">2</span>
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=100" alt="店铺">
+                        <div class="rank-info">
+                            <h4>意式风情餐厅</h4>
+                            <p>西餐 · IFS · 人均¥218</p>
+                        </div>
+                        <span class="rank-score">4.8分</span>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num top3">3</span>
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=100" alt="店铺">
+                        <div class="rank-info">
+                            <h4>樱花日料</h4>
+                            <p>日料 · 太古里 · 人均¥168</p>
+                        </div>
+                        <span class="rank-score">4.7分</span>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">4</span>
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100" alt="店铺">
+                        <div class="rank-info">
+                            <h4>甜蜜时光</h4>
+                            <p>甜品 · 宽窄巷子 · 人均¥45</p>
+                        </div>
+                        <span class="rank-score">4.6分</span>
+                    </div>
+                    <div class="rank-item">
+                        <span class="rank-num">5</span>
+                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=100" alt="店铺">
+                        <div class="rank-info">
+                            <h4>炭火烧烤</h4>
+                            <p>烧烤 · 九眼桥 · 人均¥65</p>
+                        </div>
+                        <span class="rank-score">4.5分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-lg">
+                <a href="rank.html" class="btn btn-primary">查看完整榜单</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 探店日记 -->
+    <section class="section diaries">
+        <div class="container">
+            <h2 class="section-title">探店<span>日记</span></h2>
+            <div class="diary-grid">
+                <div class="card diary-card">
+                    <div class="diary-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="用户头像" class="diary-avatar">
+                        <div class="diary-user">
+                            <h4>美食探索家</h4>
+                            <span>2小时前</span>
+                        </div>
+                    </div>
+                    <div class="diary-images">
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" alt="探店图片">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">蜀味老火锅探店</h3>
+                        <p class="card-desc">终于打卡了这家种草已久的火锅店！麻辣锅底真的绝了，毛肚七上八下刚刚好，鸭血嫩到入口即化...</p>
+                        <div class="diary-footer">
+                            <span>❤️ 128</span>
+                            <span>💬 32</span>
+                            <span>📍 春熙路</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card diary-card">
+                    <div class="diary-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="用户头像" class="diary-avatar">
+                        <div class="diary-user">
+                            <h4>吃货小王</h4>
+                            <span>5小时前</span>
+                        </div>
+                    </div>
+                    <div class="diary-images">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="探店图片">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">意式风情餐厅约会</h3>
+                        <p class="card-desc">环境超棒，灯光很有氛围感。推荐松露意面，奶油味浓郁但不腻，牛排五分熟刚刚好...</p>
+                        <div class="diary-footer">
+                            <span>❤️ 89</span>
+                            <span>💬 18</span>
+                            <span>📍 IFS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card diary-card">
+                    <div class="diary-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="用户头像" class="diary-avatar">
+                        <div class="diary-user">
+                            <h4>甜品控</h4>
+                            <span>1天前</span>
+                        </div>
+                    </div>
+                    <div class="diary-images">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="探店图片">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">甜蜜时光下午茶</h3>
+                        <p class="card-desc">马卡龙颜色太治愈了！提拉米苏口感绵密，咖啡香浓，和闺蜜聊了一下午...</p>
+                        <div class="diary-footer">
+                            <span>❤️ 256</span>
+                            <span>💬 45</span>
+                            <span>📍 宽窄巷子</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-lg">
+                <a href="diary.html" class="btn btn-secondary btn-lg">查看更多日记</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于寻味</h4>
+                    <p>寻味是一个专注于城市美食探店推荐的平台，帮助食客发现身边的美味。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="shop.html">探店</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="rank.html">榜单</a></li>
+                        <li><a href="collect.html">我的收藏</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>邮箱：contact@xunwei.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：成都市锦江区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 寻味 - 城市美食探店推荐. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

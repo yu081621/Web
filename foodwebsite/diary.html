@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探店日记 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/diary.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html" class="active">日记</a></li>
+                <li><a href="rank.html">榜单</a></li>
+                <li><a href="collect.html">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="diary-publish.html" class="btn btn-primary btn-sm">+ 发布日记</a>
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>探店日记</h1>
+            <p>分享你的美食体验，发现更多好味道</p>
+        </div>
+    </section>
+
+    <!-- 日记列表 -->
+    <section class="diary-section">
+        <div class="container">
+            <div class="diary-layout">
+                <!-- 左侧日记列表 -->
+                <div class="diary-main">
+                    <!-- 筛选栏 -->
+                    <div class="diary-filter">
+                        <div class="filter-tabs">
+                            <button class="tab-btn active">推荐</button>
+                            <button class="tab-btn">最新</button>
+                            <button class="tab-btn">热门</button>
+                            <button class="tab-btn">关注</button>
+                        </div>
+                        <div class="filter-options">
+                            <select>
+                                <option>全部地区</option>
+                                <option>春熙路</option>
+                                <option>太古里</option>
+                                <option>宽窄巷子</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 日记列表 -->
+                    <div class="diary-list">
+                        <!-- 日记卡片 1 -->
+                        <div class="diary-card">
+                            <div class="diary-header">
+                                <div class="diary-author">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="用户头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>美食探索家</h4>
+                                        <span>2小时前 · 春熙路</span>
+                                    </div>
+                                </div>
+                                <button class="follow-btn">+ 关注</button>
+                            </div>
+                            <div class="diary-content">
+                                <h3 class="diary-title">蜀味老火锅探店 | 麻辣鲜香，根本停不下来！</h3>
+                                <p class="diary-text">终于打卡了这家种草已久的火锅店！麻辣锅底真的绝了，毛肚七上八下刚刚好，鸭血嫩到入口即化。环境也很有特色，复古的装修风格，服务员态度也很好。强烈推荐大家来试试！</p>
+                                <div class="diary-tags">
+                                    <span class="tag">#火锅</span>
+                                    <span class="tag">#春熙路</span>
+                                    <span class="tag">#美食探店</span>
+                                </div>
+                                <div class="diary-images">
+                                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400" alt="探店图片">
+                                </div>
+                            </div>
+                            <div class="diary-footer">
+                                <div class="diary-actions">
+                                    <button class="action-item">
+                                        <span>❤️</span>
+                                        <span>128</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>💬</span>
+                                        <span>32</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>⭐</span>
+                                        <span>收藏</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>↗️</span>
+                                        <span>分享</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 日记卡片 2 -->
+                        <div class="diary-card">
+                            <div class="diary-header">
+                                <div class="diary-author">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="用户头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>吃货小王</h4>
+                                        <span>5小时前 · IFS</span>
+                                    </div>
+                                </div>
+                                <button class="follow-btn followed">已关注</button>
+                            </div>
+                            <div class="diary-content">
+                                <h3 class="diary-title">意式风情餐厅约会 | 浪漫氛围感拉满</h3>
+                                <p class="diary-text">环境超棒，灯光很有氛围感。推荐松露意面，奶油味浓郁但不腻，牛排五分熟刚刚好。服务员很专业，会详细介绍每道菜品。适合情侣约会，拍照也很出片！</p>
+                                <div class="diary-tags">
+                                    <span class="tag">#西餐</span>
+                                    <span class="tag">#约会餐厅</span>
+                                    <span class="tag">#IFS</span>
+                                </div>
+                                <div class="diary-images">
+                                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400" alt="探店图片">
+                                </div>
+                            </div>
+                            <div class="diary-footer">
+                                <div class="diary-actions">
+                                    <button class="action-item">
+                                        <span>❤️</span>
+                                        <span>89</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>💬</span>
+                                        <span>18</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>⭐</span>
+                                        <span>收藏</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>↗️</span>
+                                        <span>分享</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 日记卡片 3 -->
+                        <div class="diary-card">
+                            <div class="diary-header">
+                                <div class="diary-author">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="用户头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>甜品控</h4>
+                                        <span>1天前 · 宽窄巷子</span>
+                                    </div>
+                                </div>
+                                <button class="follow-btn">+ 关注</button>
+                            </div>
+                            <div class="diary-content">
+                                <h3 class="diary-title">甜蜜时光下午茶 | 颜值与美味并存</h3>
+                                <p class="diary-text">马卡龙颜色太治愈了！提拉米苏口感绵密，咖啡香浓，和闺蜜聊了一下午。店内装修很ins风，拍照打卡超好看。价格也不贵，人均45左右，性价比很高！</p>
+                                <div class="diary-tags">
+                                    <span class="tag">#甜品</span>
+                                    <span class="tag">#下午茶</span>
+                                    <span class="tag">#宽窄巷子</span>
+                                </div>
+                                <div class="diary-images">
+                                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400" alt="探店图片">
+                                    <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400" alt="探店图片">
+                                </div>
+                            </div>
+                            <div class="diary-footer">
+                                <div class="diary-actions">
+                                    <button class="action-item">
+                                        <span>❤️</span>
+                                        <span>256</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>💬</span>
+                                        <span>45</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>⭐</span>
+                                        <span>收藏</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>↗️</span>
+                                        <span>分享</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 日记卡片 4 -->
+                        <div class="diary-card">
+                            <div class="diary-header">
+                                <div class="diary-author">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="用户头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>烧烤达人</h4>
+                                        <span>2天前 · 九眼桥</span>
+                                    </div>
+                                </div>
+                                <button class="follow-btn">+ 关注</button>
+                            </div>
+                            <div class="diary-content">
+                                <h3 class="diary-title">炭火烧烤 | 夜宵首选，撸串喝酒好去处</h3>
+                                <p class="diary-text">正宗炭火烧烤，肉质鲜嫩，调料独特。羊肉串肥瘦相间，烤得外焦里嫩，配上冰镇啤酒，简直是夏天的绝配！环境虽然简单但很干净，老板人也很好。</p>
+                                <div class="diary-tags">
+                                    <span class="tag">#烧烤</span>
+                                    <span class="tag">#夜宵</span>
+                                    <span class="tag">#九眼桥</span>
+                                </div>
+                                <div class="diary-images">
+                                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400" alt="探店图片">
+                                </div>
+                            </div>
+                            <div class="diary-footer">
+                                <div class="diary-actions">
+                                    <button class="action-item">
+                                        <span>❤️</span>
+                                        <span>67</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>💬</span>
+                                        <span>12</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>⭐</span>
+                                        <span>收藏</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <span>↗️</span>
+                                        <span>分享</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 加载更多 -->
+                    <div class="load-more">
+                        <button class="btn btn-secondary">加载更多</button>
+                    </div>
+                </div>
+
+                <!-- 右侧侧边栏 -->
+                <div class="diary-sidebar">
+                    <!-- 热门话题 -->
+                    <div class="sidebar-card">
+                        <h3>🔥 热门话题</h3>
+                        <ul class="topic-list">
+                            <li>
+                                <a href="#">
+                                    <span class="topic-rank">1</span>
+                                    <span class="topic-name">#火锅探店</span>
+                                    <span class="topic-count">2.3k</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="topic-rank">2</span>
+                                    <span class="topic-name">#周末去哪儿吃</span>
+                                    <span class="topic-count">1.8k</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="topic-rank">3</span>
+                                    <span class="topic-name">#甜品控</span>
+                                    <span class="topic-count">1.5k</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="topic-rank">4</span>
+                                    <span class="topic-name">#约会餐厅</span>
+                                    <span class="topic-count">1.2k</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="topic-rank">5</span>
+                                    <span class="topic-name">#深夜食堂</span>
+                                    <span class="topic-count">986</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 推荐用户 -->
+                    <div class="sidebar-card">
+                        <h3>👥 推荐关注</h3>
+                        <ul class="user-list">
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="用户头像">
+                                <div class="user-info">
+                                    <h4>美食探索家</h4>
+                                    <span>已发布 128 篇日记</span>
+                                </div>
+                                <button class="btn-follow">关注</button>
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="用户头像">
+                                <div class="user-info">
+                                    <h4>吃货小王</h4>
+                                    <span>已发布 86 篇日记</span>
+                                </div>
+                                <button class="btn-follow">关注</button>
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="用户头像">
+                                <div class="user-info">
+                                    <h4>甜品控</h4>
+                                    <span>已发布 64 篇日记</span>
+                                </div>
+                                <button class="btn-follow">关注</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 发布入口 -->
+                    <div class="sidebar-card publish-card">
+                        <h3>分享你的美食体验</h3>
+                        <p>记录探店点滴，帮助更多人发现好味道</p>
+                        <a href="diary-publish.html" class="btn btn-primary btn-lg">发布探店日记</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于寻味</h4>
+                    <p>寻味是一个专注于城市美食探店推荐的平台，帮助食客发现身边的美味。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="shop.html">探店</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="rank.html">榜单</a></li>
+                        <li><a href="collect.html">我的收藏</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>邮箱：contact@xunwei.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：成都市锦江区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 寻味 - 城市美食探店推荐. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/diary.js"></script>
+</body>
+</html>

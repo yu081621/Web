@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的收藏 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/collect.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html">日记</a></li>
+                <li><a href="rank.html">榜单</a></li>
+                <li><a href="collect.html" class="active">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 用户头部信息 -->
+    <section class="user-header">
+        <div class="container">
+            <div class="user-profile">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200" alt="用户头像" class="user-avatar">
+                <div class="user-info">
+                    <h1>美食爱好者</h1>
+                    <p>📍 成都 · 🍜 已探店 12 家 · ✍️ 发布日记 5 篇</p>
+                </div>
+                <div class="user-actions">
+                    <a href="#" class="btn btn-secondary">编辑资料</a>
+                    <a href="diary-publish.html" class="btn btn-primary">发布日记</a>
+                </div>
+            </div>
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-value">28</span>
+                    <span class="stat-label">收藏</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">已打卡</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">想去</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">156</span>
+                    <span class="stat-label">获赞</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <section class="collect-section">
+        <div class="container">
+            <div class="collect-layout">
+                <!-- 左侧内容 -->
+                <div class="collect-main">
+                    <!-- 标签切换 -->
+                    <div class="collect-tabs">
+                        <button class="collect-tab active" data-tab="all">
+                            <span>全部</span>
+                            <span class="tab-count">28</span>
+                        </button>
+                        <button class="collect-tab" data-tab="want">
+                            <span>想去</span>
+                            <span class="tab-count">5</span>
+                        </button>
+                        <button class="collect-tab" data-tab="checked">
+                            <span>已打卡</span>
+                            <span class="tab-count">12</span>
+                        </button>
+                        <button class="collect-tab" data-tab="favorite">
+                            <span>收藏</span>
+                            <span class="tab-count">11</span>
+                        </button>
+                    </div>
+
+                    <!-- 店铺列表 -->
+                    <div class="collect-list">
+                        <div class="collect-item">
+                            <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=200" alt="店铺">
+                            <div class="collect-info">
+                                <h3>蜀味老火锅</h3>
+                                <p>火锅 · 春熙路 · 人均¥88</p>
+                                <div class="collect-meta">
+                                    <span class="rating">★ 4.9分</span>
+                                    <span class="status checked">✓ 已打卡</span>
+                                </div>
+                            </div>
+                            <div class="collect-actions">
+                                <button class="action-btn">查看</button>
+                                <button class="action-btn remove">移除</button>
+                            </div>
+                        </div>
+
+                        <div class="collect-item">
+                            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=200" alt="店铺">
+                            <div class="collect-info">
+                                <h3>樱花日料</h3>
+                                <p>日料 · 太古里 · 人均¥168</p>
+                                <div class="collect-meta">
+                                    <span class="rating">★ 4.7分</span>
+                                    <span class="status want">想去</span>
+                                </div>
+                            </div>
+                            <div class="collect-actions">
+                                <button class="action-btn">查看</button>
+                                <button class="action-btn remove">移除</button>
+                            </div>
+                        </div>
+
+                        <div class="collect-item">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="店铺">
+                            <div class="collect-info">
+                                <h3>意式风情餐厅</h3>
+                                <p>西餐 · IFS · 人均¥218</p>
+                                <div class="collect-meta">
+                                    <span class="rating">★ 4.8分</span>
+                                    <span class="status favorite">⭐ 收藏</span>
+                                </div>
+                            </div>
+                            <div class="collect-actions">
+                                <button class="action-btn">查看</button>
+                                <button class="action-btn remove">移除</button>
+                            </div>
+                        </div>
+
+                        <div class="collect-item">
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200" alt="店铺">
+                            <div class="collect-info">
+                                <h3>甜蜜时光</h3>
+                                <p>甜品 · 宽窄巷子 · 人均¥45</p>
+                                <div class="collect-meta">
+                                    <span class="rating">★ 4.6分</span>
+                                    <span class="status checked">✓ 已打卡</span>
+                                </div>
+                            </div>
+                            <div class="collect-actions">
+                                <button class="action-btn">查看</button>
+                                <button class="action-btn remove">移除</button>
+                            </div>
+                        </div>
+
+                        <div class="collect-item">
+                            <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200" alt="店铺">
+                            <div class="collect-info">
+                                <h3>炭火烧烤</h3>
+                                <p>烧烤 · 九眼桥 · 人均¥65</p>
+                                <div class="collect-meta">
+                                    <span class="rating">★ 4.5分</span>
+                                    <span class="status want">想去</span>
+                                </div>
+                            </div>
+                            <div class="collect-actions">
+                                <button class="action-btn">查看</button>
+                                <button class="action-btn remove">移除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧侧边栏 -->
+                <div class="collect-sidebar">
+                    <!-- 探店统计 -->
+                    <div class="sidebar-card">
+                        <h3>📊 探店统计</h3>
+                        <div class="stats-chart">
+                            <div class="chart-item">
+                                <span class="chart-label">火锅</span>
+                                <div class="chart-bar">
+                                    <div class="chart-fill" style="width: 40%"></div>
+                                </div>
+                                <span class="chart-value">5家</span>
+                            </div>
+                            <div class="chart-item">
+                                <span class="chart-label">日料</span>
+                                <div class="chart-bar">
+                                    <div class="chart-fill" style="width: 25%"></div>
+                                </div>
+                                <span class="chart-value">3家</span>
+                            </div>
+                            <div class="chart-item">
+                                <span class="chart-label">西餐</span>
+                                <div class="chart-bar">
+                                    <div class="chart-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="chart-value">2家</span>
+                            </div>
+                            <div class="chart-item">
+                                <span class="chart-label">甜品</span>
+                                <div class="chart-bar">
+                                    <div class="chart-fill" style="width: 20%"></div>
+                                </div>
+                                <span class="chart-value">2家</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 最近浏览 -->
+                    <div class="sidebar-card">
+                        <h3>👀 最近浏览</h3>
+                        <ul class="recent-list">
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=100" alt="店铺">
+                                <div class="recent-info">
+                                    <h4>蜀味老火锅</h4>
+                                    <span>刚刚</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=100" alt="店铺">
+                                <div class="recent-info">
+                                    <h4>樱花日料</h4>
+                                    <span>2小时前</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=100" alt="店铺">
+                                <div class="recent-info">
+                                    <h4>意式风情餐厅</h4>
+                                    <span>昨天</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 我的日记 -->
+                    <div class="sidebar-card">
+                        <h3>📝 我的日记</h3>
+                        <div class="my-diaries">
+                            <div class="diary-mini">
+                                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=200" alt="日记">
+                                <div class="diary-mini-info">
+                                    <h4>蜀味老火锅探店</h4>
+                                    <span>❤️ 128 · 💬 32</span>
+                                </div>
+                            </div>
+                            <div class="diary-mini">
+                                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200" alt="日记">
+                                <div class="diary-mini-info">
+                                    <h4>甜蜜时光下午茶</h4>
+                                    <span>❤️ 256 · 💬 45</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="diary.html" class="view-all">查看全部日记 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于寻味</h4>
+                    <p>寻味是一个专注于城市美食探店推荐的平台，帮助食客发现身边的美味。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="shop.html">探店</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="rank.html">榜单</a></li>
+                        <li><a href="collect.html">我的收藏</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>邮箱：contact@xunwei.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：成都市锦江区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 寻味 - 城市美食探店推荐. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/collect.js"></script>
+</body>
+</html>
