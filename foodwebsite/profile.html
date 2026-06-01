@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑资料 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+      /* 局部覆盖：profile 专用小样式，尽量少量以沿用通用样式 */
+      .profile-edit { max-width: 880px; margin: 110px auto 60px; }
+      .profile-card { padding: 24px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+      .avatar-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
+      .avatar-preview { width:160px; height:160px; border-radius:12px; object-fit:cover; border:2px solid var(--border-color); }
+      .hint { color:var(--text-secondary); font-size:13px; }
+      .form-actions { display:flex; gap:12px; margin-top:12px; }
+      @media (max-width:768px) {
+        .profile-card { grid-template-columns: 1fr; }
+        .profile-edit { margin: 90px 16px 40px; }
+      }
+    </style>
+</head>
+<body>
+    <!-- 导航（复用 site 导航样式） -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="shop.html">探店</a></li>
+                <li><a href="diary.html">日记</a></li>
+                <li><a href="rank.html">榜单</a></li>
+                <li><a href="collect.html" class="active">我的</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost btn-sm">登录</a>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container profile-edit">
+        <h2 class="section-title">编辑资料</h2>
+
+        <div class="card profile-card">
+            <div>
+                <div class="avatar-wrap">
+                    <img id="avatarPreview" class="avatar-preview" src="https://cdn.jsdelivr.net/gh/yu081621/Web@main/foodwebsite/static/default-avatar.png" alt="头像预览">
+                    <label class="btn btn-secondary" for="avatarInput">更换头像</label>
+                    <input id="avatarInput" name="avatar" type="file" accept="image/*" style="display:none">
+                    <div class="hint">支持 PNG/JPG/WEBP，最大 2MB，建议正方形 256x256</div>
+                </div>
+
+                <div style="margin-top:16px; width:100%; text-align:center;">
+                    <button id="removeAvatar" class="btn btn-ghost">移除头像</button>
+                </div>
+            </div>
+
+            <div>
+                <form id="profileForm" class="form">
+                    <div class="form-group">
+                        <label class="form-label" for="displayName">显示名</label>
+                        <input id="displayName" name="display_name" class="form-input" type="text" maxlength="100" placeholder="显示给其他用户的名字">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="username">用户名（链接用，可选）</label>
+                        <input id="username" name="username" class="form-input" type="text" maxlength="50" placeholder="用户名 / 个人链接">
+                        <div class="hint">用户名用于个人主页链接，修改后可能影响引用。</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="bio">个人简介</label>
+                        <textarea id="bio" name="bio" class="form-textarea" rows="6" maxlength="1000" placeholder="介绍一下自己，例如喜欢的美食、城市、标签等"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">社交链接（可选）</label>
+                        <input id="website" name="website" class="form-input" type="text" placeholder="例如：https://yourblog.com">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary">取消</button>
+                    </div>
+                </form>
+
+                <div style="margin-top:18px;" id="previewArea">
+                    <h4 class="form-label">实时预览</h4>
+                    <div class="card" style="display:flex; gap:12px; padding:12px; align-items:center;">
+                        <img id="liveAvatar" src="https://cdn.jsdelivr.net/gh/yu081621/Web@main/foodwebsite/static/default-avatar.png" alt="预览头像" style="width:72px; height:72px; border-radius:10px; object-fit:cover; border:1px solid var(--border-color);">
+                        <div>
+                            <div style="font-weight:600; font-size:16px;" id="liveDisplayName">未设置</div>
+                            <div style="color:var(--text-secondary); font-size:13px;" id="liveUsername">@username</div>
+                            <div style="color:var(--text-secondary); margin-top:6px; max-width:520px;" id="liveBio">个人简介将显示在这里。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于寻味</h4>
+                    <p>寻味是一个专注于城市美食探店推荐的平台，帮助食客发现身边的美味。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="shop.html">探店</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="rank.html">榜单</a></li>
+                        <li><a href="collect.html">我的收藏</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>邮箱：contact@xunwei.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：成都市锦江区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 寻味 - 城市美食探店推荐. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
