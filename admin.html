@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台 - 寻味</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">🍜</div>
+                <span>寻味后台</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" onclick="showSection('dashboard')">
+                <span>📊</span>
+                <span>数据概览</span>
+            </a>
+            <a href="#shops" class="nav-item" onclick="showSection('shops')">
+                <span>🏪</span>
+                <span>店铺管理</span>
+            </a>
+            <a href="#diaries" class="nav-item" onclick="showSection('diaries')">
+                <span>📝</span>
+                <span>日记审核</span>
+            </a>
+            <a href="#users" class="nav-item" onclick="showSection('users')">
+                <span>👥</span>
+                <span>用户管理</span>
+            </a>
+            <a href="#comments" class="nav-item" onclick="showSection('comments')">
+                <span>💬</span>
+                <span>评论管理</span>
+            </a>
+            <a href="#settings" class="nav-item" onclick="showSection('settings')">
+                <span>⚙️</span>
+                <span>系统设置</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="index.html" class="nav-item">
+                <span>🏠</span>
+                <span>返回前台</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span>🚪</span>
+                <span>退出登录</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="admin-main">
+        <!-- 顶部栏 -->
+        <header class="admin-header">
+            <h1>数据概览</h1>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索...">
+                    <button>🔍</button>
+                </div>
+                <div class="notifications">
+                    <span class="badge">3</span>
+                    <span>🔔</span>
+                </div>
+                <div class="admin-user">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100" alt="管理员">
+                    <span>管理员</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 数据概览 -->
+        <section class="admin-section active" id="dashboard-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(230, 126, 34, 0.1); color: var(--primary);">🏪</div>
+                    <div class="stat-info">
+                        <span class="stat-value">256</span>
+                        <span class="stat-label">入驻店铺</span>
+                    </div>
+                    <span class="stat-change up">↑ 12%</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(52, 152, 219, 0.1); color: #3498db;">👥</div>
+                    <div class="stat-info">
+                        <span class="stat-value">12,580</span>
+                        <span class="stat-label">注册用户</span>
+                    </div>
+                    <span class="stat-change up">↑ 8%</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(155, 89, 182, 0.1); color: #9b59b6;">📝</div>
+                    <div class="stat-info">
+                        <span class="stat-value">3,420</span>
+                        <span class="stat-label">探店日记</span>
+                    </div>
+                    <span class="stat-change up">↑ 15%</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(46, 204, 113, 0.1); color: #2ecc71;">💬</div>
+                    <div class="stat-info">
+                        <span class="stat-value">8,920</span>
+                        <span class="stat-label">用户评论</span>
+                    </div>
+                    <span class="stat-change down">↓ 3%</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>📈 访问趋势</h3>
+                    <div class="chart-placeholder">
+                        <div class="mock-chart">
+                            <div class="mock-bar" style="height: 40%"></div>
+                            <div class="mock-bar" style="height: 60%"></div>
+                            <div class="mock-bar" style="height: 45%"></div>
+                            <div class="mock-bar" style="height: 80%"></div>
+                            <div class="mock-bar" style="height: 70%"></div>
+                            <div class="mock-bar" style="height: 90%"></div>
+                            <div class="mock-bar" style="height: 85%"></div>
+                        </div>
+                        <div class="mock-labels">
+                            <span>周一</span>
+                            <span>周二</span>
+                            <span>周三</span>
+                            <span>周四</span>
+                            <span>周五</span>
+                            <span>周六</span>
+                            <span>周日</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>🔥 热门分类</h3>
+                    <div class="category-stats">
+                        <div class="category-item">
+                            <span class="category-name">火锅</span>
+                            <div class="category-bar">
+                                <div class="category-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="category-value">85%</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-name">日料</span>
+                            <div class="category-bar">
+                                <div class="category-fill" style="width: 72%"></div>
+                            </div>
+                            <span class="category-value">72%</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-name">西餐</span>
+                            <div class="category-bar">
+                                <div class="category-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="category-value">65%</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-name">甜品</span>
+                            <div class="category-bar">
+                                <div class="category-fill" style="width: 58%"></div>
+                            </div>
+                            <span class="category-value">58%</span>
+                        </div>
+                        <div class="category-item">
+                            <span class="category-name">烧烤</span>
+                            <div class="category-bar">
+                                <div class="category-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="category-value">45%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>⏰ 待处理事项</h3>
+                <div class="todo-list">
+                    <div class="todo-item urgent">
+                        <span class="todo-icon">📝</span>
+                        <div class="todo-info">
+                            <h4>待审核日记</h4>
+                            <p>有 12 篇探店日记等待审核</p>
+                        </div>
+                        <a href="#diaries" class="btn btn-primary btn-sm" onclick="showSection('diaries')">去处理</a>
+                    </div>
+                    <div class="todo-item">
+                        <span class="todo-icon">💬</span>
+                        <div class="todo-info">
+                            <h4>举报评论</h4>
+                            <p>有 5 条评论被举报需要处理</p>
+                        </div>
+                        <a href="#comments" class="btn btn-secondary btn-sm" onclick="showSection('comments')">去处理</a>
+                    </div>
+                    <div class="todo-item">
+                        <span class="todo-icon">🏪</span>
+                        <div class="todo-info">
+                            <h4>新入驻店铺</h4>
+                            <p>有 3 家店铺申请入驻</p>
+                        </div>
+                        <a href="#shops" class="btn btn-secondary btn-sm" onclick="showSection('shops')">去处理</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 店铺管理 -->
+        <section class="admin-section" id="shops-section">
+            <div class="section-header">
+                <h2>店铺管理</h2>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openAddShopModal()">+ 添加店铺</button>
+                </div>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>店铺ID</th>
+                            <th>店铺名称</th>
+                            <th>类型</th>
+                            <th>商圈</th>
+                            <th>评分</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>
+                                <div class="table-shop">
+                                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=100" alt="店铺">
+                                    <span>蜀味老火锅</span>
+                                </div>
+                            </td>
+                            <td>火锅</td>
+                            <td>春熙路</td>
+                            <td>4.9</td>
+                            <td><span class="status-badge active">营业中</span></td>
+                            <td>
+                                <button class="btn-text" onclick="openShopEditModal('001')">编辑</button>
+                                <button class="btn-text danger" onclick="deleteShop('001')">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>
+                                <div class="table-shop">
+                                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=100" alt="店铺">
+                                    <span>樱花日料</span>
+                                </div>
+                            </td>
+                            <td>日料</td>
+                            <td>太古里</td>
+                            <td>4.7</td>
+                            <td><span class="status-badge active">营业中</span></td>
+                            <td>
+                               <button class="btn-text" onclick="openShopEditModal('002')">编辑</button>
+                               <button class="btn-text danger" onclick="deleteShop('002')">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>
+                                <div class="table-shop">
+                                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=100" alt="店铺">
+                                    <span>意式风情餐厅</span>
+                                </div>
+                            </td>
+                            <td>西餐</td>
+                            <td>IFS</td>
+                            <td>4.8</td>
+                            <td><span class="status-badge pending">审核中</span></td>
+                            <td>
+                                <button class="btn-text" onclick="openShopEditModal('003')">编辑</button>
+                                <button class="btn-text danger" onclick="deleteShop('003')">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 日记审核 -->
+        <section class="admin-section" id="diaries-section">
+            <div class="section-header">
+                <h2>日记审核</h2>
+                <div class="filter-tabs">
+                    <button class="tab-btn active">待审核</button>
+                    <button class="tab-btn">已通过</button>
+                    <button class="tab-btn">已拒绝</button>
+                </div>
+            </div>
+            <div class="review-list">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="用户">
+                        <div class="review-info">
+                            <h4>美食探索家</h4>
+                            <span>2024-01-15 14:30</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <h3>蜀味老火锅探店 | 麻辣鲜香，根本停不下来！</h3>
+                        <p>终于打卡了这家种草已久的火锅店！麻辣锅底真的绝了，毛肚七上八下刚刚好，鸭血嫩到入口即化...</p>
+                        <div class="review-images">
+                            <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=200" alt="图片">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200" alt="图片">
+                        </div>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-primary">通过</button>
+                        <button class="btn btn-secondary">拒绝</button>
+                        <button class="btn btn-ghost">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户管理 -->
+        <section class="admin-section" id="users-section">
+            <div class="section-header">
+                <h2>用户管理</h2>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>用户ID</th>
+                            <th>用户信息</th>
+                            <th>手机号</th>
+                            <th>注册时间</th>
+                            <th>发布日记</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1001</td>
+                            <td>
+                                <div class="table-user">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="用户">
+                                    <span>美食探索家</span>
+                                </div>
+                            </td>
+                            <td>138****8888</td>
+                            <td>2024-01-01</td>
+                            <td>12篇</td>
+                            <td><span class="status-badge active">正常</span></td>
+                            <td>
+                                <button class="btn-text">查看</button>
+                                <button class="btn-text danger">禁用</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 评论管理 -->
+        <section class="admin-section" id="comments-section">
+            <div class="section-header">
+                <h2>评论管理</h2>
+            </div>
+            <div class="review-list">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="用户">
+                        <div class="review-info">
+                            <h4>吃货小王</h4>
+                            <span>评论了 樱花日料</span>
+                        </div>
+                        <span class="report-badge">被举报</span>
+                    </div>
+                    <div class="review-content">
+                        <p>这家店的食材一点都不新鲜，吃完就拉肚子了，大家千万别来！</p>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-secondary">隐藏</button>
+                        <button class="btn btn-ghost">忽略举报</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 系统设置 -->
+        <section class="admin-section" id="settings-section">
+            <div class="section-header">
+                <h2>系统设置</h2>
+            </div>
+            <div class="settings-form">
+                <div class="form-section">
+                    <h3>网站信息</h3>
+                    <div class="form-group">
+                        <label>网站名称</label>
+                        <input type="text" value="寻味" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>网站描述</label>
+                        <textarea class="form-textarea">发现城市里的美味惊喜</textarea>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>审核设置</h3>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span>日记发布需要审核</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span>评论发布需要审核</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary">保存设置</button>
+                </div>
+            </div>
+        </section>
+      <!-- 店铺编辑弹窗 -->
+<div class="modal" id="shopEditModal">
+    <div class="modal-overlay" onclick="closeShopModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>编辑店铺信息</h3>
+            <button class="modal-close" onclick="closeShopModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="shopEditForm">
+                <input type="hidden" id="editShopId">
+                <div class="form-group">
+                    <label>店铺名称</label>
+                    <input type="text" id="editShopName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺类型</label>
+                    <select id="editShopType" class="form-input" required>
+                        <option value="火锅">火锅</option>
+                        <option value="日料">日料</option>
+                        <option value="西餐">西餐</option>
+                        <option value="甜品">甜品</option>
+                        <option value="烧烤">烧烤</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>所属商圈</label>
+                    <input type="text" id="editShopArea" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺评分</label>
+                    <input type="number" id="editShopScore" class="form-input" min="0" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺状态</label>
+                    <select id="editShopStatus" class="form-input" required>
+                        <option value="active">营业中</option>
+                        <option value="pending">审核中</option>
+                        <option value="closed">已停业</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>店铺图片URL</label>
+                    <input type="text" id="editShopImage" class="form-input" placeholder="https://...">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeShopModal()">取消</button>
+            <button class="btn btn-primary" onclick="saveShopEdit()">保存修改</button>
+        </div>
+    </div>
+</div>
+<!-- 删除确认弹窗（美观版） -->
+<div class="modal" id="deleteModal">
+    <div class="modal-overlay" onclick="closeDeleteModal()"></div>
+    <div class="modal-content delete-modal">
+        <div class="modal-header">
+            <h3>确认删除</h3>
+            <button class="modal-close" onclick="closeDeleteModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="delete-tip">确定要删除该店铺吗？<br>此操作不可恢复，请谨慎操作！</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">取消</button>
+            <button class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
+        </div>
+    </div>
+</div>
+<!-- 添加店铺弹窗 -->
+<div class="modal" id="shopAddModal">
+    <div class="modal-overlay" onclick="closeAddShopModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>添加新店铺</h3>
+            <button class="modal-close" onclick="closeAddShopModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="shopAddForm">
+                <div class="form-group">
+                    <label>店铺名称</label>
+                    <input type="text" id="addShopName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺类型</label>
+                    <select id="addShopType" class="form-input" required>
+                        <option value="火锅">火锅</option>
+                        <option value="日料">日料</option>
+                        <option value="西餐">西餐</option>
+                        <option value="甜品">甜品</option>
+                        <option value="烧烤">烧烤</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>所属商圈</label>
+                    <input type="text" id="addShopArea" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺评分</label>
+                    <input type="number" id="addShopScore" class="form-input" min="0" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>店铺状态</label>
+                    <select id="addShopStatus" class="form-input" required>
+                        <option value="active">营业中</option>
+                        <option value="pending">审核中</option>
+                        <option value="closed">已停业</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>店铺图片URL</label>
+                    <input type="text" id="addShopImage" class="form-input" placeholder="https://...">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeAddShopModal()">取消</button>
+            <button class="btn btn-primary" onclick="saveAddShop()">保存店铺</button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
